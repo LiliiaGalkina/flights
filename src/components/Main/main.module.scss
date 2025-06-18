@@ -43,15 +43,32 @@
 		border-radius: 0.4rem;
 		accent-color: #E8EBF2;
 		border: 1px solid #858AE3;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 
-	&__rowradio {
+	&__rowcheckboxcircle {
+		position: relative;
 		appearance: none;
 		width: 2.1rem;
 		height: 2.1rem;
 		border-radius: 50%;
 		accent-color: #E8EBF2;
 		border: 1px solid #858AE3;
+		}
+	
+
+		&__rowcheckboxcircle_after {
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0.2rem;
+			left: 0.2rem;
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: 50%;
+			background-color: #858AE3;
+		}
 	}
 
 	&__rowtext {
