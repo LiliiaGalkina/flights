@@ -1,17 +1,26 @@
 import FilterCountTransfers from "./FilterCountTransfers";
 import FilterCompany from "./FilterCompany";
 import style from "./main.module.scss";
+import Ticket from "./Ticket";
 
 export default function Main() {
-	return (
-		<div className={style.content}>
-			<div className={style.content__filter}>
-				<FilterCountTransfers />
-				<FilterCompany/>
-			</div>
-			<div className={style.content__info}>
-
-			</div>
+  return (
+    <div className={style.content}>
+      <div className={style.content__filter}>
+        <FilterCountTransfers />
+        <FilterCompany />
+      </div>
+      <div className={style.content__info}>
+        <div className={style.content__buttons}>
+          <button className={style.content__button}>Самый дешевый</button>
+          <button className={style.content__button}>Самый быстрый</button>
+          <button className={style.content__button}>Самый оптимальный</button>
+        </div>
+        <div className={style.content_filtertablet}></div>
+			  <div className={style.content__tickets}>
+				  <Ticket/>
 		</div>
-	)
+      </div>
+    </div>
+  );
 }
