@@ -17,9 +17,12 @@ export default function Main() {
           <button className={style.content__button}>Самый оптимальный</button>
         </div>
         <div className={style.content_filtertablet}></div>
-			  <div className={style.content__tickets}>
-				  <Ticket/>
-		</div>
+        <div className={style.content__tickets}>
+          <Ticket />
+          <Ticket />
+          <Ticket />
+        </div>
+        <button className={style.button}>Загрузить еще билеты</button>
       </div>
     </div>
   );

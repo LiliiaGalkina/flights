@@ -1,4 +1,5 @@
 .content {
+  padding-bottom: 5.9rem;
   display: flex;
   justify-content: space-between;
 
@@ -8,29 +9,33 @@
   }
 
   &__info {
-	width: 100%;
+    width: 100%;
   }
 
   &__buttons {
-	margin-bottom: 2.9rem;
-	width: 100%;
-	height: 5.5rem;
-	display: flex;
-	border-radius: 1rem;
-	border: 0.1rem solid #4E148C;
-	overflow: hidden;
+    margin-bottom: 2.9rem;
+    width: 100%;
+    height: 5.5rem;
+    display: flex;
+    border-radius: 1rem;
+    border: 0.1rem solid #4e148c;
+    overflow: hidden;
   }
 
   &__button {
-	flex: 1;
-	background-color: #e8ebf2;
-	font-size: 1.6rem;
-	font-weight: 700;
-	color: #4E148C;
-	&:nth-child(2){
-		border-left: 0.1rem solid #4E148C;
-		border-right: 0.1rem solid #4E148C;
-	}
+    flex: 1;
+    background-color: #e8ebf2;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #4e148c;
+    &:nth-child(2) {
+      border-left: 0.1rem solid #4e148c;
+      border-right: 0.1rem solid #4e148c;
+    }
+  }
+
+  &__tickets {
+    margin-bottom: 7.4rem;
   }
 }
 
@@ -103,39 +108,52 @@
 }
 
 .ticket {
-	width: 100%;
-	min-height: 17.4rem;
-	padding: 3.2rem 2.4rem 2.5rem;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	column-gap: 1.5rem;
-	background-color: #e8ebf2;
-	border-radius: 1rem;
+  width: 100%;
+  min-height: 17.4rem;
+  padding: 3.2rem 2.4rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #e8ebf2;
+  border-radius: 1rem;
 
-	&__item {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
+  &:not(:last-child) {
+    margin-bottom: 4.7rem;
+  }
 
-	&__price {
-		margin-bottom: 2.5rem;
-		font-size: 3.2rem;
-		font-weight: 700;
-	}
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-	&__info {
-		flex: 0 1 auto;
-	}
+  &__price {
+    margin-bottom: 2.5rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+  }
 
-	&__text {
-		margin-bottom: 0.9rem;
-		font-size: 1.6rem;
-		font-weight: 500;
-		color: #858AE3;
-	}
+  &__info {
+    flex: 0 1 auto;
+  }
 
-	&__time {
-		font-weight: 500;
-	}
+  &__text {
+    margin-bottom: 0.9rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #858ae3;
+  }
+
+  &__time {
+    font-weight: 500;
+  }
+}
+
+.button {
+  width: 100%;
+  height: 6.2rem;
+  border-radius: 1rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  background-color: #4e148c;
+  color: #f7f9f7;
 }
