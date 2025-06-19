@@ -2,6 +2,7 @@ import FilterCountTransfers from "./FilterCountTransfers";
 import FilterCompany from "./FilterCompany";
 import style from "./main.module.scss";
 import Ticket from "./Ticket";
+import FilterMobile from "./FilterMobile";
 
 export default function Main() {
   return (
@@ -16,7 +17,7 @@ export default function Main() {
           <button className={style.content__button}>Самый быстрый</button>
           <button className={style.content__button}>Самый оптимальный</button>
         </div>
-        <div className={style.content_filtertablet}></div>
+        <FilterMobile/>
         <div className={style.content__tickets}>
           <Ticket />
           <Ticket />

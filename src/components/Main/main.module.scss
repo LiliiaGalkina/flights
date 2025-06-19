@@ -157,3 +157,90 @@
   background-color: #4e148c;
   color: #f7f9f7;
 }
+
+.filtermobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .content__filter {
+    display: none;
+  }
+
+  .filtermobile {
+    display: block;
+    margin-bottom: 3.4rem;
+    width: 100%;
+    padding: 1.2rem 1.6rem 0 2.3rem;
+    border-radius: 1rem;
+    background-color: #4e148c;
+    color: #f7f9f7;
+
+    &__row {
+		padding-bottom: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__info {
+      margin-right: 1rem;
+      font-weight: 500;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+	  cursor: pointer;
+    }
+
+    &__buttontext {
+      margin-right: 1.7rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    &__items {
+		padding-bottom: 4.1rem;
+      display: flex;
+    }
+
+    .filter {
+      padding: 0;
+      display: block;
+      background-color: inherit;
+      &:not(:last-child) {
+        margin-right: 6.6rem;
+      }
+
+      &__title {
+        margin-bottom: 1.2rem;
+        font-size: 2.4rem;
+      }
+
+      &__rowtext {
+        color: #f7f9f7;
+      }
+
+      &__rowcheckbox {
+        border: 0.1rem solid #f7f9f7;
+      }
+
+      &__rowcheckboxcircle {
+        border: 0.1rem solid #f7f9f7;
+      }
+
+      &__rowcheckboxcircle_after {
+       &::after {
+        background-color: #f7f9f7;
+
+	   }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+	
+}

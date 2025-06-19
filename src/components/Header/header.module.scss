@@ -17,3 +17,17 @@
 	}
 }
 
+@media (max-width: 768px) {
+	.header {
+		padding: 2.9rem 0 2.7rem;
+		justify-content: center;
+
+		&__logo {
+			max-width: 5.7rem;
+		}
+		&__title {
+			display: none;
+		}
+	}
+}
+
