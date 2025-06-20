@@ -163,7 +163,6 @@
 }
 
 @media (max-width: 768px) {
-
   .content__filter {
     display: none;
   }
@@ -178,7 +177,7 @@
     color: #f7f9f7;
 
     &__row {
-		padding-bottom: 1.3rem;
+      padding-bottom: 1.3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -192,7 +191,7 @@
     &__button {
       display: flex;
       align-items: center;
-	  cursor: pointer;
+      cursor: pointer;
     }
 
     &__buttontext {
@@ -202,11 +201,12 @@
     }
 
     &__items {
-		padding-bottom: 4.1rem;
+      padding-bottom: 4.1rem;
       display: flex;
     }
 
     .filter {
+	margin-bottom: 0;
       padding: 0;
       display: block;
       background-color: inherit;
@@ -219,12 +219,18 @@
         font-size: 2.4rem;
       }
 
+	  &__items {
+		margin: 0;
+	  }
+
       &__rowtext {
         color: #f7f9f7;
+		
       }
 
       &__rowcheckbox {
         border: 0.1rem solid #f7f9f7;
+		
       }
 
       &__rowcheckboxcircle {
@@ -232,15 +238,119 @@
       }
 
       &__rowcheckboxcircle_after {
-       &::after {
-        background-color: #f7f9f7;
+        &::after {
+          background-color: #f7f9f7;
+        }
+      }
+    }
+  }
 
-	   }
+  .ticket {
+	&__item {
+		&:last-child {
+			text-align: center;
+		}
+	}
+  }
+}
+
+@media (max-width: 650px) {
+  .content {
+    &__buttons {
+      margin-bottom: 1.2rem;
+      height: 4.2rem;
+    }
+
+    &__button {
+      font-size: 1.2rem;
+    }
+  }
+
+  .filtermobile {
+    &__info {
+      font-size: 1.2rem;
+    }
+
+    &__buttontext {
+      display: none;
+    }
+
+    .filter {
+      &__title {
+        font-size: 2rem;
+      }
+
+      &__items {
+        padding-bottom: 0;
+      }
+
+      &:not(:last-child) {
+        margin-right: 4rem;
       }
     }
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 480px) {
+	.filtermobile {
+		.filter {
+			&__title {
+				font-size: 1.6rem;
+				text-align: left;
+			}
+
+			&__rowtext {
+				margin-left: 1rem;
+				font-size: 1.4rem;
+			}
+		}
+	}
+
+	.ticket {
+		&__company {
+			max-width: 16rem;
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media (max-width: 448px) {
+	.filtermobile {
+		&__items {
+			flex-direction: column;
+		}
+
+		.filter {
+			&:not(:last-child){
+				margin-right: 0;
+				margin-bottom: 2.4rem;
+			}
+
+			&__rowtext {
+				font-size: 1.6rem;
+			}
+		}
+	}
+	.ticket {
+		padding: 1rem;
+		min-height: 14rem;
+
+		&__price {
+			font-size: 2.8rem;
+		}
+
+		&__text,
+		&__time {
+			font-size: 1.2rem;
+		}
+
+		&__company {
+			max-width: 13rem;
+		}
+	}
+
+
 	
 }

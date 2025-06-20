@@ -37,6 +37,7 @@ export default function FilterCountTransfers() {
             onChange={handleFilterTransitClick0}
             style={{
               backgroundImage: filterTransit0 ? `url(${mark})` : "none",
+              backgroundColor: filterTransit0 ? "#e8ebf2" : "inherit",
             }}
           />
           <label htmlFor="transit0" className={style.filter__rowtext}>
@@ -52,6 +53,7 @@ export default function FilterCountTransfers() {
             onChange={handleFilterTransitClick1}
             style={{
               backgroundImage: filterTransit1 ? `url(${mark})` : "none",
+              backgroundColor: filterTransit1 ? "#e8ebf2" : "inherit",
             }}
           />
           <label htmlFor="transit1" className={style.filter__rowtext}>
@@ -67,6 +69,7 @@ export default function FilterCountTransfers() {
             onChange={handleFilterTransitClick2}
             style={{
               backgroundImage: filterTransit2 ? `url(${mark})` : "none",
+              backgroundColor: filterTransit2 ? "#e8ebf2" : "inherit",
             }}
           />
           <label htmlFor="transit2" className={style.filter__rowtext}>
@@ -82,6 +85,7 @@ export default function FilterCountTransfers() {
             onChange={handleFilterTransitClick3}
             style={{
               backgroundImage: filterTransit3 ? `url(${mark})` : "none",
+              backgroundColor: filterTransit3 ? "#e8ebf2" : "inherit",
             }}
           />
           <label htmlFor="transit3" className={style.filter__rowtext}>
