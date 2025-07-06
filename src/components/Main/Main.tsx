@@ -3,12 +3,23 @@ import FilterCompany from "./FilterCompany";
 import style from "./main.module.scss";
 import Ticket from "./Ticket";
 import FilterMobile from "./FilterMobile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchFlights } from "../../store/flightsSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+
+
 
 export default function Main() {
 	const [isCheapActive, setIsCheapActive] = useState(true);
 	const [isFastActive, setIsFastActive] = useState(false);
 	const [isOptimalActive, setIsOptimalActive] = useState(false);
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+			dispatch(fetchFlights())
+	}, [dispatch])
+	
+	const flights = useAppSelector(state => state.flights.flights)
 
 	const onFilterCheap = () => {
 		if (!isCheapActive) {
@@ -73,11 +84,11 @@ export default function Main() {
             Самый оптимальный
           </button>
         </div>
-        <FilterMobile />
-        <div className={style.content__tickets}>
-          <Ticket />
-          <Ticket />
-          <Ticket />
+			  <FilterMobile />
+			  <div className={style.content__tickets}>
+				  {flights.map((flight) => (
+					  <Ticket key={flight.id} {...flight} />
+				  ))}
         </div>
         <button className={style.button}>Загрузить еще билеты</button>
       </div>
