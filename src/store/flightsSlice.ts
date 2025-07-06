@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from "@reduxjs/toolkit";
+import { companies } from "../components/Main/FilterCompany";
+import { countTransits } from "../components/Main/FilterCountTransfers";
 
 type Time = {
 	startTime: string;
@@ -54,7 +56,16 @@ const flightsSlice = createSlice({
     },
     sortTicketsOptimal: (state) => {
       state.flights = state.flights.sort((a, b) => a.connectionAmount - b.connectionAmount);
-    },
+	  },
+	  filterTickets: (state) => {
+		  if (companies.length > 0 && countTransits.length === 0) {
+			state.flights = state.flights.filter(flight => companies.includes(flight.company))
+		  } else if (companies.length === 0 && countTransits.length > 0) {
+			  state.flights = state.flights.filter(flight => countTransits.includes(flight.connectionAmount))
+		  } else if (companies.length > 0 && countTransits.length > 0) {
+			  state.flights =state.flights.filter(flight => companies.includes(flight.company) && countTransits.includes(flight.connectionAmount))
+		}
+	}
   },
   extraReducers: (builder) => {
     builder
@@ -72,5 +83,5 @@ const flightsSlice = createSlice({
   },
 });
 
-export const { sortTicketsCheap, sortTicketsFast, sortTicketsOptimal } = flightsSlice.actions;
+export const { sortTicketsCheap, sortTicketsFast, sortTicketsOptimal, filterTickets } = flightsSlice.actions;
 export default flightsSlice.reducer;
