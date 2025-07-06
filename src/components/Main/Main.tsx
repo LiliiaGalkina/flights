@@ -3,14 +3,15 @@ import FilterCompany from "./FilterCompany";
 import style from "./main.module.scss";
 import Ticket from "./Ticket";
 import FilterMobile from "./FilterMobile";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { fetchFlights } from "../../store/flightsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { sortTicketsCheap, sortTicketsFast, sortTicketsOptimal } from "../../store/flightsSlice";
 
 
 
 export default function Main() {
-	const [isCheapActive, setIsCheapActive] = useState(true);
+	const [isCheapActive, setIsCheapActive] = useState(false);
 	const [isFastActive, setIsFastActive] = useState(false);
 	const [isOptimalActive, setIsOptimalActive] = useState(false);
 	const dispatch = useAppDispatch();
@@ -19,13 +20,14 @@ export default function Main() {
 			dispatch(fetchFlights())
 	}, [dispatch])
 	
-	const flights = useAppSelector(state => state.flights.flights)
+	const flights = useAppSelector(state => state.flights.flights);
 
 	const onFilterCheap = () => {
 		if (!isCheapActive) {
 			setIsCheapActive(true);
 			setIsFastActive(false);
 			setIsOptimalActive(false);
+			dispatch(sortTicketsCheap());
 		}
 	}
 
@@ -34,6 +36,7 @@ export default function Main() {
 			setIsFastActive(true);
 			setIsCheapActive(false);
 			setIsOptimalActive(false);
+			dispatch(sortTicketsFast());
 		}
 	}
 
@@ -42,6 +45,7 @@ export default function Main() {
 			setIsOptimalActive(true);
 			setIsCheapActive(false);
 			setIsFastActive(false);
+			dispatch(sortTicketsOptimal())
 		}
 	}
 
