@@ -1,29 +1,45 @@
 import { useState } from "react";
 import style from "./main.module.scss";
-import mark from "../../assets/mark.svg"
+import mark from "../../assets/mark.svg";
+
+let countTransits: number[] = [];
 
 export default function FilterCountTransfers() {
   const [filterTransit0, setFilterTransit0] = useState(false);
   const [filterTransit1, setFilterTransit1] = useState(false);
   const [filterTransit2, setFilterTransit2] = useState(false);
-	const [filterTransit3, setFilterTransit3] = useState(false);
-	
-	function handleFilterTransitClick0() {
-		setFilterTransit0(!filterTransit0);
-	}
+  const [filterTransit3, setFilterTransit3] = useState(false);
 
-		function handleFilterTransitClick1() {
-      setFilterTransit1(!filterTransit1);
-	}
-	
-		function handleFilterTransitClick2() {
-      setFilterTransit2(!filterTransit2);
-	}
-	
-		function handleFilterTransitClick3() {
-      setFilterTransit3(!filterTransit3);
-	}
-	
+  const checkCountTransit = (count: number) => {
+    if (!countTransits.includes(count)) {
+      countTransits.push(count);
+    } else {
+      countTransits = countTransits.filter(
+        (countTransit) => countTransit !== count
+      );
+	  }
+  };
+
+  const handleFilterTransitClick0 = () => {
+    setFilterTransit0(!filterTransit0);
+    checkCountTransit(0);
+  }
+
+  const handleFilterTransitClick1 = () => {
+    setFilterTransit1(!filterTransit1);
+    checkCountTransit(1);
+  }
+
+  const handleFilterTransitClick2 = () => {
+    setFilterTransit2(!filterTransit2);
+    checkCountTransit(2);
+  }
+
+  const handleFilterTransitClick3 = () => {
+    setFilterTransit3(!filterTransit3);
+    checkCountTransit(3);
+  }
+
   return (
     <div className={style.filter}>
       <h2 className={style.filter__title}>Количество пересадок</h2>
@@ -96,3 +112,5 @@ export default function FilterCountTransfers() {
     </div>
   );
 }
+
+export { countTransits };

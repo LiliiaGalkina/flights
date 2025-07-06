@@ -1,22 +1,38 @@
 import style from "./main.module.scss";
 import { useState } from "react";
 
+let companies: string[] = [];
+
+
 export default function FilterCompany() {
   const [filterCompany1, setFilterCompany1] = useState(false);
   const [filterCompany2, setFilterCompany2] = useState(false);
   const [filterCompany3, setFilterCompany3] = useState(false);
 
-  function handleFilterCompanyClick1() {
-    setFilterCompany1(!filterCompany1);
+	const checkCompanies = (company: string) => {
+		if (!companies.includes(company)) {
+      companies.push(company);
+    } else {
+      companies = companies.filter((companyItem) => companyItem !== company);
+    }
+	};
+	
+  const handleFilterCompanyClick1 = () => {
+	  setFilterCompany1(!filterCompany1);
+	  checkCompanies("Победа");
+
   }
 
-  function handleFilterCompanyClick2() {
-    setFilterCompany2(!filterCompany2);
+  const handleFilterCompanyClick2 = () => {
+	  setFilterCompany2(!filterCompany2);
+	  checkCompanies("Red Wings");
   }
 
-  function handleFilterCompanyClick3() {
-    setFilterCompany3(!filterCompany3);
-  }
+  const handleFilterCompanyClick3 = () => {
+	  setFilterCompany3(!filterCompany3);
+	  checkCompanies("S7 Airlines");
+	}
+	
   return (
     <div className={style.filter}>
       <h2 className={style.filter__title}>Компании</h2>
@@ -72,10 +88,12 @@ export default function FilterCompany() {
             onChange={handleFilterCompanyClick3}
           />
           <label htmlFor="transit3" className={style.filter__rowtext}>
-            3 пересадки
+            Red Wings
           </label>
         </div>
       </div>
     </div>
   );
 }
+
+export { companies }
