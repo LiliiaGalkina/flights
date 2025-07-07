@@ -1,9 +1,11 @@
 import style from "./main.module.scss";
 import { useState } from "react";
-import { filterTickets } from "../../store/flightsSlice";
+import { useAppSelector } from "../../store/hook";
+
 import { useAppDispatch } from "../../store/hook";
 
-let companies: string[] = [];
+import {toggleCompaniesFilter, toggleTransitsFilter, selectFilters, selectAvailableFilters} from "../../store/flightsSlice"
+
 
 
 export default function FilterCompany() {
@@ -11,35 +13,27 @@ export default function FilterCompany() {
   const [filterCompany2, setFilterCompany2] = useState(false);
 	const [filterCompany3, setFilterCompany3] = useState(false);
 	
-	const dispatch = useAppDispatch(); 
+	const dispatch = useAppDispatch();
+	const filters = useAppSelector(selectFilters);
+	  const availableFilters = useAppSelector(selectAvailableFilters);
 
-	const checkCompanies = (company: string) => {
-		if (!companies.includes(company)) {
-      companies.push(company);
-    } else {
-      companies = companies.filter((companyItem) => companyItem !== company);
-    }
-	};
-	
+
   const handleFilterCompanyClick1 = () => {
 	  setFilterCompany1(!filterCompany1);
-	  checkCompanies("Победа");
-	  dispatch(filterTickets());
-
-  }
+	  dispatch(toggleCompaniesFilter("Победа"))
+  
+  };
 
   const handleFilterCompanyClick2 = () => {
-	  setFilterCompany2(!filterCompany2);
-	  checkCompanies("Red Wings");
-	   dispatch(filterTickets());
-  }
+    setFilterCompany2(!filterCompany2);
+	  dispatch(toggleCompaniesFilter("Red Wings"));
+  };
 
   const handleFilterCompanyClick3 = () => {
-	  setFilterCompany3(!filterCompany3);
-	  checkCompanies("S7 Airlines");
-	   dispatch(filterTickets());
-	}
-	
+    setFilterCompany3(!filterCompany3);
+   dispatch(toggleCompaniesFilter("S7 Airlines"));
+  };
+
   return (
     <div className={style.filter}>
       <h2 className={style.filter__title}>Компании</h2>
@@ -95,12 +89,10 @@ export default function FilterCompany() {
             onChange={handleFilterCompanyClick3}
           />
           <label htmlFor="transit3" className={style.filter__rowtext}>
-            Red Wings
+            S7 Airlines
           </label>
         </div>
       </div>
     </div>
   );
 }
-
-export { companies }
