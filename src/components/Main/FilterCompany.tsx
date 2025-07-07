@@ -1,10 +1,8 @@
 import style from "./main.module.scss";
 import { useState } from "react";
-import { useAppSelector } from "../../store/hook";
-
 import { useAppDispatch } from "../../store/hook";
 
-import {toggleCompaniesFilter, toggleTransitsFilter, selectFilters, selectAvailableFilters} from "../../store/flightsSlice"
+
 
 
 
@@ -14,24 +12,18 @@ export default function FilterCompany() {
 	const [filterCompany3, setFilterCompany3] = useState(false);
 	
 	const dispatch = useAppDispatch();
-	const filters = useAppSelector(selectFilters);
-	  const availableFilters = useAppSelector(selectAvailableFilters);
 
 
   const handleFilterCompanyClick1 = () => {
 	  setFilterCompany1(!filterCompany1);
-	  dispatch(toggleCompaniesFilter("Победа"))
-  
   };
 
   const handleFilterCompanyClick2 = () => {
     setFilterCompany2(!filterCompany2);
-	  dispatch(toggleCompaniesFilter("Red Wings"));
   };
 
   const handleFilterCompanyClick3 = () => {
     setFilterCompany3(!filterCompany3);
-   dispatch(toggleCompaniesFilter("S7 Airlines"));
   };
 
   return (

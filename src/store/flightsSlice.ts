@@ -1,6 +1,5 @@
 import {
-	createSlice,
-	createSelector,
+createSlice,
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
@@ -58,46 +57,19 @@ const initialState: FlightState = {
 const flightsSlice = createSlice({
   name: "flights",
   initialState,
-  reducers: {
-    sortTicketsCheap: (state) => {
-      state.flights = state.flights.sort((a, b) => a.price - b.price);
-    },
-    sortTicketsFast: (state) => {
-      state.flights = state.flights.sort((a, b) => a.duration - b.duration);
-    },
-    sortTicketsOptimal: (state) => {
-      state.flights = state.flights.sort(
-        (a, b) => a.connectionAmount - b.connectionAmount
-      );
-    },
-    toggleCompaniesFilter: (state, action) => {
-      const company = action.payload;
-      const index = state.filters.companies.indexOf(company);
-
-      if (index > -1) {
-        state.filters.companies.splice(index, 1);
-      } else {
-        state.filters.companies.push(company);
-      }
-    },
-    toggleTransitsFilter: (state, action) => {
-      const transfers = action.payload;
-      const index = state.filters.transits.indexOf(transfers);
-
-      if (index > -1) {
-        state.filters.transits.splice(index, 1);
-      } else {
-        state.filters.transits.push(transfers);
-      }
-    },
-    setCompaniesFilters: (state, action) => {
-      state.filters.companies = action.payload;
-    },
-
-    setTransitsFilters: (state, action) => {
-      state.filters.transits = action.payload;
-    },
-  },
+	reducers: {
+		sortTicketsCheap: (state) => {
+			state.flights = state.flights.sort((a, b) => a.price - b.price);
+		},
+		sortTicketsFast: (state) => {
+			state.flights = state.flights.sort((a, b) => a.duration - b.duration);
+		},
+		sortTicketsOptimal: (state) => {
+			state.flights = state.flights.sort(
+				(a, b) => a.connectionAmount - b.connectionAmount
+			);
+		},
+	},
   extraReducers: (builder) => {
     builder
       .addCase(fetchFlights.pending, (state) => {
@@ -118,47 +90,7 @@ export const {
   sortTicketsCheap,
   sortTicketsFast,
   sortTicketsOptimal,
-  toggleCompaniesFilter,
-  toggleTransitsFilter,
-  setCompaniesFilters,
-  setTransitsFilters,
 } = flightsSlice.actions;
 
-export const selectFlights = (state:RootState) => state.flights.flights
-export const selectFilters = (state:RootState) => state.flights.filters;
-export const selectLoading = (state:RootState) => state.flights.loading;
-export const selectError = (state: RootState) => state.flights.error;
-
-export const selectFilteredFlights = createSelector(
-  [selectFlights, selectFilters],
-  (flights, filters) => {
-    let filtered = flights;
-
-    if (filters.companies.length > 0) {
-      filtered = filtered.filter((flight) =>
-        filters.companies.includes(flight.company)
-      );
-    }
-
-    if (filters.transits.length > 0) {
-      filtered = filtered.filter((flight) =>
-        filters.transits.includes(flight.connectionAmount)
-      );
-    }
-
-    const sortedTickets = [...filtered];
-
-
-    return sortedTickets;
-	}
-);
-
-export const selectAvailableFilters = createSelector(
-  [selectFlights],
-  (flights) => ({
-    companies: [...new Set(flights.map((flight) => flight.company))],
-    transits: [...new Set(flights.map((flight) => flight.connectionAmount))],
-  })
-);
 
 export default flightsSlice.reducer;
