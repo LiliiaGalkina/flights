@@ -55,7 +55,7 @@
       "startTime": "02:00",
       "endTime": "22:30"
     },
-    "company": "Победа",
+    "company":  "Red Wings",
     "duration": 1230,
     "connectionAmount": 3
   },
@@ -95,16 +95,88 @@
     "duration": 150,
     "connectionAmount": 0
   },
+  {
+    "id": 9,
+    "price": 20540,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "10:00",
+      "endTime": "18:30"
+    },
+    "company": "S7 Airlines",
+    "duration": 510,
+    "connectionAmount": 2
+  },
+  {
+    "id": 10,
+    "price": 35680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "02:00",
+      "endTime": "20:50"
+    },
+    "company": "Победа",
+    "duration": 1130,
+    "connectionAmount": 2
+  },
+  {
+    "id": 11,
+    "price": 22680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "00:10",
+      "endTime": "16:40"
+    },
+    "company": "S7 Airlines",
+    "duration": 1000,
+    "connectionAmount": 1
+  },
+  {
+    "id": 12,
+    "price": 10680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "08:10",
+      "endTime": "12:20"
+    },
+    "company": "Победа",
+    "duration": 260,
+    "connectionAmount": 0
+  },
+  {
+    "id": 13,
+    "price": 9540,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "11:00",
+      "endTime": "15:10"
+    },
+    "company": "Победа",
+    "duration": 250,
+    "connectionAmount": 0
+  },
+  {
+    "id": 14,
+    "price": 21540,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "10:00",
+      "endTime": "20:10"
+    },
+    "company": "S7 Airlines",
+    "duration": 610,
+    "connectionAmount": 2
+  },
     {
-      "id": 9,
-      "price": 20540,
+      "id": 15,
+      "price": 10540,
       "fromto": "SVO-LED",
       "time": {
         "startTime": "10:00",
-        "endTime": "18:30"
+        "endTime": "16:50"
       },
       "company": "S7 Airlines",
-      "duration": 510,
-      "connectionAmount": 2
+      "duration": 410,
+      "connectionAmount": 1
     }
 ]

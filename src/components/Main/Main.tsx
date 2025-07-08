@@ -3,10 +3,12 @@ import FilterCompany from "./FilterCompany";
 import style from "./main.module.scss";
 import Ticket from "./Ticket";
 import FilterMobile from "./FilterMobile";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useCallback} from "react";
 import { fetchFlights } from "../../store/flightsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { sortTicketsCheap, sortTicketsFast, sortTicketsOptimal } from "../../store/flightsSlice";
+
+
 
 
 
@@ -14,13 +16,20 @@ export default function Main() {
 	const [isCheapActive, setIsCheapActive] = useState(false);
 	const [isFastActive, setIsFastActive] = useState(false);
 	const [isOptimalActive, setIsOptimalActive] = useState(false);
+	const [displayedTickets, setDisplayedTickets] = useState<number>(3);
+	
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 			dispatch(fetchFlights())
 	}, [dispatch])
 
-	
+	const handleLoadMore = useCallback(() => {
+		if (displayedTickets < 15) {
+      setDisplayedTickets(displayedTickets + 3);
+			  
+		  }
+    }, [displayedTickets]);
 	
 	const flights = useAppSelector(state => state.flights.filtered);
 
@@ -92,13 +101,19 @@ export default function Main() {
             Самый оптимальный
           </button>
         </div>
-			  <FilterMobile />
-			  <div className={style.content__tickets}>
-				  {flights.map((flight) => (
-					  <Ticket key={flight.id} {...flight} />
-				  ))}
+        <FilterMobile />
+        <div className={style.content__tickets}>
+          {flights.slice(0, displayedTickets).map((flight) => (
+            <Ticket key={flight.id} {...flight} />
+          ))}
         </div>
-        <button className={style.button}>Загрузить еще билеты</button>
+        <button
+          className={style.button}
+          style={{display: displayedTickets < 15 ? "block" : "none"}}
+          onClick={handleLoadMore}
+        >
+          Загрузить еще билеты
+        </button>
       </div>
     </div>
   );

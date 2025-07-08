@@ -26,8 +26,10 @@ type FlightState = {
   flights: Flight[];
   filtered: Flight[];
   loading: boolean;
-  error: string | null;
+error: string | null; 
 };
+
+
 
 export const fetchFlights = createAsyncThunk<
   Flight[],
@@ -46,8 +48,9 @@ const initialState: FlightState = {
   flights: [],
   filtered: [],
   loading: false,
-  error: null,
+	error: null,
 };
+
 
 const flightsSlice = createSlice({
   name: "flights",
@@ -68,20 +71,20 @@ const flightsSlice = createSlice({
       if (companiesName.length > 0 && countTransits.length === 0) {
         state.filtered = state.flights.filter((flight) =>
           companiesName.includes(flight.company)
-        ) 
-	  } else if (companiesName.length === 0 && countTransits.length > 0) {
-		  state.filtered = state.flights.filter((flight) =>
-        countTransits.includes(flight.connectionAmount)
-      )
-	  } else if (companiesName.length > 0 && countTransits.length > 0) {
-		   state.filtered = state.flights.filter(
-         (flight) =>
-           countTransits.includes(flight.connectionAmount) &&
-           companiesName.includes(flight.company)
-       );
-	  } else if (companiesName.length === 0 && countTransits.length === 0) {
-		  state.filtered = state.flights;
-	  }
+        );
+      } else if (companiesName.length === 0 && countTransits.length > 0) {
+        state.filtered = state.flights.filter((flight) =>
+          countTransits.includes(flight.connectionAmount)
+        );
+      } else if (companiesName.length > 0 && countTransits.length > 0) {
+        state.filtered = state.flights.filter(
+          (flight) =>
+            countTransits.includes(flight.connectionAmount) &&
+            companiesName.includes(flight.company)
+        );
+      } else if (companiesName.length === 0 && countTransits.length === 0) {
+        state.filtered = state.flights;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -93,7 +96,7 @@ const flightsSlice = createSlice({
       .addCase(
         fetchFlights.fulfilled,
         (state, action: PayloadAction<Flight[]>) => {
-			state.flights = action.payload;
+          state.flights = action.payload;
 			state.filtered = action.payload;
           state.loading = false;
         }
