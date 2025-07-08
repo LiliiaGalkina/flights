@@ -1,10 +1,11 @@
 import style from "./main.module.scss";
 import { useState } from "react";
 import { useAppDispatch } from "../../store/hook";
+import {filterTickets} from "../../store/flightsSlice"
 
 
 
-
+export let companiesName: string[] = [];
 
 export default function FilterCompany() {
   const [filterCompany1, setFilterCompany1] = useState(false);
@@ -13,17 +14,34 @@ export default function FilterCompany() {
 	
 	const dispatch = useAppDispatch();
 
+	const checkCompanies = (company: string) => {
+		if (!companiesName.includes(company)) {
+			companiesName.push(company)
+		} else {
+			companiesName = companiesName.filter((companyItem) => companyItem !== company)
+		}
+	}
+
 
   const handleFilterCompanyClick1 = () => {
 	  setFilterCompany1(!filterCompany1);
+	  checkCompanies("Победа");
+	  dispatch(filterTickets())
+
   };
 
   const handleFilterCompanyClick2 = () => {
-    setFilterCompany2(!filterCompany2);
+	  setFilterCompany2(!filterCompany2);
+	  checkCompanies("Red Wings");
+	   dispatch(filterTickets());
+    
   };
 
   const handleFilterCompanyClick3 = () => {
-    setFilterCompany3(!filterCompany3);
+	  setFilterCompany3(!filterCompany3);
+	  checkCompanies("S7 Airlines");
+	   dispatch(filterTickets());
+
   };
 
   return (

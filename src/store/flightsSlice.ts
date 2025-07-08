@@ -1,8 +1,11 @@
 import {
-createSlice,
+  createSlice,
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
+
+import { companiesName } from "../components/Main/FilterCompany";
+import { countTransits } from "../components/Main/FilterCountTransfers";
 
 type Time = {
   startTime: string;
@@ -21,10 +24,7 @@ type Flight = {
 
 type FlightState = {
   flights: Flight[];
-  filters: {
-    companies: string[];
-    transits: number[];
-  };
+  filtered: Flight[];
   loading: boolean;
   error: string | null;
 };
@@ -44,10 +44,7 @@ export const fetchFlights = createAsyncThunk<
 
 const initialState: FlightState = {
   flights: [],
-  filters: {
-    companies: [],
-    transits: []
-  },
+  filtered: [],
   loading: false,
   error: null,
 };
@@ -55,19 +52,38 @@ const initialState: FlightState = {
 const flightsSlice = createSlice({
   name: "flights",
   initialState,
-	reducers: {
-		sortTicketsCheap: (state) => {
-			state.flights = state.flights.sort((a, b) => a.price - b.price);
-		},
-		sortTicketsFast: (state) => {
-			state.flights = state.flights.sort((a, b) => a.duration - b.duration);
-		},
-		sortTicketsOptimal: (state) => {
-			state.flights = state.flights.sort(
-				(a, b) => a.connectionAmount - b.connectionAmount
-			);
-		},
-	},
+  reducers: {
+    sortTicketsCheap: (state) => {
+      state.flights = state.filtered.sort((a, b) => a.price - b.price);
+    },
+    sortTicketsFast: (state) => {
+      state.flights = state.filtered.sort((a, b) => a.duration - b.duration);
+    },
+    sortTicketsOptimal: (state) => {
+      state.flights = state.filtered.sort(
+        (a, b) => a.connectionAmount - b.connectionAmount
+      );
+    },
+    filterTickets: (state) => {
+      if (companiesName.length > 0 && countTransits.length === 0) {
+        state.filtered = state.flights.filter((flight) =>
+          companiesName.includes(flight.company)
+        ) 
+	  } else if (companiesName.length === 0 && countTransits.length > 0) {
+		  state.filtered = state.flights.filter((flight) =>
+        countTransits.includes(flight.connectionAmount)
+      )
+	  } else if (companiesName.length > 0 && countTransits.length > 0) {
+		   state.filtered = state.flights.filter(
+         (flight) =>
+           countTransits.includes(flight.connectionAmount) &&
+           companiesName.includes(flight.company)
+       );
+	  } else if (companiesName.length === 0 && countTransits.length === 0) {
+		  state.filtered = state.flights;
+	  }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFlights.pending, (state) => {
@@ -77,7 +93,8 @@ const flightsSlice = createSlice({
       .addCase(
         fetchFlights.fulfilled,
         (state, action: PayloadAction<Flight[]>) => {
-          state.flights = action.payload;
+			state.flights = action.payload;
+			state.filtered = action.payload;
           state.loading = false;
         }
       );
@@ -88,7 +105,7 @@ export const {
   sortTicketsCheap,
   sortTicketsFast,
   sortTicketsOptimal,
+  filterTickets,
 } = flightsSlice.actions;
-
 
 export default flightsSlice.reducer;

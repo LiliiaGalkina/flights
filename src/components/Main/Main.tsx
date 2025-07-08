@@ -19,8 +19,12 @@ export default function Main() {
 	useEffect(() => {
 			dispatch(fetchFlights())
 	}, [dispatch])
+
 	
-	const flights = useAppSelector(state => state.flights.flights);
+	
+	const flights = useAppSelector(state => state.flights.filtered);
+
+	
 
 	const onFilterCheap = () => {
 		if (!isCheapActive) {

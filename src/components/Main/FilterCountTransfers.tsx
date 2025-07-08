@@ -1,10 +1,10 @@
 import { useState } from "react";
 import style from "./main.module.scss";
 import mark from "../../assets/mark.svg";
-
 import { useAppDispatch } from "../../store/hook";
+import { filterTickets } from "../../store/flightsSlice";
 
-let countTransits: number[] = [];
+export let countTransits: number[] = [];
 
 export default function FilterCountTransfers() {
   const [filterTransit0, setFilterTransit0] = useState(false);
@@ -12,40 +12,39 @@ export default function FilterCountTransfers() {
   const [filterTransit2, setFilterTransit2] = useState(false);
 	const [filterTransit3, setFilterTransit3] = useState(false);
 	
-	const dispatch = useAppDispatch()
-
+	const dispatch = useAppDispatch();
+	
   const checkCountTransit = (count: number) => {
     if (!countTransits.includes(count)) {
       countTransits.push(count);
     } else {
-      countTransits = countTransits.filter(
-        (countTransit) => countTransit !== count
-      );
+     countTransits = countTransits.filter((countTransitItem) => countTransitItem !== count)
 	  }
   };
 
   const handleFilterTransitClick0 = () => {
     setFilterTransit0(!filterTransit0);
 	  checkCountTransit(0);
+	    dispatch(filterTickets())
 	
   }
 
   const handleFilterTransitClick1 = () => {
     setFilterTransit1(!filterTransit1);
 	  checkCountTransit(1);
-	
+	  dispatch(filterTickets())
   }
 
   const handleFilterTransitClick2 = () => {
     setFilterTransit2(!filterTransit2);
 	  checkCountTransit(2);
-	
+	 dispatch(filterTickets());
   }
 
   const handleFilterTransitClick3 = () => {
     setFilterTransit3(!filterTransit3);
 	  checkCountTransit(3);
-	 
+	 dispatch(filterTickets());
   }
 
   return (
@@ -121,4 +120,3 @@ export default function FilterCountTransfers() {
   );
 }
 
-export { countTransits };
