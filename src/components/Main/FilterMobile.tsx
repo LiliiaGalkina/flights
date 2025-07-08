@@ -1,10 +1,11 @@
+import React from "react";
 import style from "./main.module.scss";
 import arrow from "../../assets/arrow.png";
 import FilterCompany from "./FilterCompany";
 import FilterCountTransfers from "./FilterCountTransfers";
 import { useState } from "react";
 
-export default function FilterMobile() {
+const FilterMobile: React.FC = () => {
 	const [showFilter, setShowFilter] = useState(false);
 
   return (
@@ -25,3 +26,5 @@ export default function FilterMobile() {
     </div>
   );
 }
+
+export default FilterMobile;

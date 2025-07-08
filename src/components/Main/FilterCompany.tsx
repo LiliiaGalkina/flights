@@ -1,47 +1,44 @@
+import React from "react";
 import style from "./main.module.scss";
 import { useState } from "react";
 import { useAppDispatch } from "../../store/hook";
-import {filterTickets} from "../../store/flightsSlice"
-
-
+import { filterTickets } from "../../store/flightsSlice";
 
 export let companiesName: string[] = [];
 
-export default function FilterCompany() {
+const FilterCompany:React.FC = () => {
   const [filterCompany1, setFilterCompany1] = useState(false);
   const [filterCompany2, setFilterCompany2] = useState(false);
-	const [filterCompany3, setFilterCompany3] = useState(false);
-	
-	const dispatch = useAppDispatch();
+  const [filterCompany3, setFilterCompany3] = useState(false);
 
-	const checkCompanies = (company: string) => {
-		if (!companiesName.includes(company)) {
-			companiesName.push(company)
-		} else {
-			companiesName = companiesName.filter((companyItem) => companyItem !== company)
-		}
-	}
+  const dispatch = useAppDispatch();
 
+  const checkCompanies = (company: string) => {
+    if (!companiesName.includes(company)) {
+      companiesName.push(company);
+    } else {
+      companiesName = companiesName.filter(
+        (companyItem) => companyItem !== company
+      );
+    }
+  };
 
   const handleFilterCompanyClick1 = () => {
-	  setFilterCompany1(!filterCompany1);
-	  checkCompanies("Победа");
-	  dispatch(filterTickets())
-
+    setFilterCompany1(!filterCompany1);
+    checkCompanies("Победа");
+    dispatch(filterTickets());
   };
 
   const handleFilterCompanyClick2 = () => {
-	  setFilterCompany2(!filterCompany2);
-	  checkCompanies("Red Wings");
-	   dispatch(filterTickets());
-    
+    setFilterCompany2(!filterCompany2);
+    checkCompanies("Red Wings");
+    dispatch(filterTickets());
   };
 
   const handleFilterCompanyClick3 = () => {
-	  setFilterCompany3(!filterCompany3);
-	  checkCompanies("S7 Airlines");
-	   dispatch(filterTickets());
-
+    setFilterCompany3(!filterCompany3);
+    checkCompanies("S7 Airlines");
+    dispatch(filterTickets());
   };
 
   return (
@@ -106,3 +103,5 @@ export default function FilterCompany() {
     </div>
   );
 }
+
+export default FilterCompany;

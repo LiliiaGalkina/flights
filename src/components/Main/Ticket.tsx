@@ -3,7 +3,6 @@ import pobeda from "../../assets/pobeda.png";
 import s7 from "../../assets/s7.png";
 import redwings from "../../assets/redwings.png";
 
-
 type Time = {
   startTime: string;
   endTime: string;

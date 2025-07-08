@@ -1,7 +1,8 @@
+import React from "react";
 import plane from "../../assets/plane.png";
 import style from "./header.module.scss"
 
-export default function Header() {
+const Header: React.FC = () => {
 	return (
     <header className={style.header}>
       <div className={style.header__logo}>
@@ -11,3 +12,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;

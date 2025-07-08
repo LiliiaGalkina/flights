@@ -1,12 +1,12 @@
-import "./components/Layout/reset.scss"
-import Layout from "./components/Layout/Layout"
+import "./components/Layout/reset.scss";
+import Layout from "./components/Layout/Layout";
 
-function App() {
+const App = () => {
   return (
-	  <div>
-		  <Layout/>
- </div>
-  )
-}
+    <div>
+      <Layout />
+    </div>
+  );
+};
 
-export default App
+export default App;

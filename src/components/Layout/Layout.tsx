@@ -1,8 +1,9 @@
+import React from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import style from "./layout.module.scss"
 
-export default function Layout() {
+const Layout: React.FC = () => {
   return (
 	  <div className={style.container}>
 		  <Header />
@@ -10,3 +11,5 @@ export default function Layout() {
     </div>
   );
 }
+
+export default Layout;

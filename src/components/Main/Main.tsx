@@ -1,66 +1,64 @@
+import React from "react";
 import FilterCountTransfers from "./FilterCountTransfers";
 import FilterCompany from "./FilterCompany";
 import style from "./main.module.scss";
 import Ticket from "./Ticket";
 import FilterMobile from "./FilterMobile";
-import { useState, useEffect, useCallback} from "react";
+import { useState, useEffect, useCallback } from "react";
 import { fetchFlights } from "../../store/flightsSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { sortTicketsCheap, sortTicketsFast, sortTicketsOptimal } from "../../store/flightsSlice";
+import {
+  sortTicketsCheap,
+  sortTicketsFast,
+  sortTicketsOptimal,
+} from "../../store/flightsSlice";
 
+const Main: React.FC = () => {
+  const [isCheapActive, setIsCheapActive] = useState(false);
+  const [isFastActive, setIsFastActive] = useState(false);
+  const [isOptimalActive, setIsOptimalActive] = useState(false);
+  const [displayedTickets, setDisplayedTickets] = useState<number>(3);
 
+  const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    dispatch(fetchFlights());
+  }, [dispatch]);
 
-
-export default function Main() {
-	const [isCheapActive, setIsCheapActive] = useState(false);
-	const [isFastActive, setIsFastActive] = useState(false);
-	const [isOptimalActive, setIsOptimalActive] = useState(false);
-	const [displayedTickets, setDisplayedTickets] = useState<number>(3);
-	
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-			dispatch(fetchFlights())
-	}, [dispatch])
-
-	const handleLoadMore = useCallback(() => {
-		if (displayedTickets < 15) {
+  const handleLoadMore = useCallback(() => {
+    if (displayedTickets < 15) {
       setDisplayedTickets(displayedTickets + 3);
-			  
-		  }
-    }, [displayedTickets]);
-	
-	const flights = useAppSelector(state => state.flights.filtered);
+    }
+  }, [displayedTickets]);
 
-	
+  const flights = useAppSelector((state) => state.flights.filtered);
 
-	const onFilterCheap = () => {
-		if (!isCheapActive) {
-			setIsCheapActive(true);
-			setIsFastActive(false);
-			setIsOptimalActive(false);
-			dispatch(sortTicketsCheap());
-		}
-	}
+  const onFilterCheap = () => {
+    if (!isCheapActive) {
+      setIsCheapActive(true);
+      setIsFastActive(false);
+      setIsOptimalActive(false);
+      dispatch(sortTicketsCheap());
+    }
+  };
 
-	const onFilterFast = () => {
-		if (!isFastActive) {
-			setIsFastActive(true);
-			setIsCheapActive(false);
-			setIsOptimalActive(false);
-			dispatch(sortTicketsFast());
-		}
-	}
+  const onFilterFast = () => {
+    if (!isFastActive) {
+      setIsFastActive(true);
+      setIsCheapActive(false);
+      setIsOptimalActive(false);
+      dispatch(sortTicketsFast());
+    }
+  };
 
-	const onFilterOptimal = () => {
-		if (!isOptimalActive) {
-			setIsOptimalActive(true);
-			setIsCheapActive(false);
-			setIsFastActive(false);
-			dispatch(sortTicketsOptimal())
-		}
-	}
+  const onFilterOptimal = () => {
+    if (!isOptimalActive) {
+      setIsOptimalActive(true);
+      setIsCheapActive(false);
+      setIsFastActive(false);
+      dispatch(sortTicketsOptimal());
+    }
+  };
 
   return (
     <div className={style.content}>
@@ -109,7 +107,7 @@ export default function Main() {
         </div>
         <button
           className={style.button}
-          style={{display: displayedTickets < 15 ? "block" : "none"}}
+          style={{ display: displayedTickets < 15 ? "block" : "none" }}
           onClick={handleLoadMore}
         >
           Загрузить еще билеты
@@ -117,4 +115,6 @@ export default function Main() {
       </div>
     </div>
   );
-}
+};
+
+export default Main;

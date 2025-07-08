@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import style from "./main.module.scss";
 import mark from "../../assets/mark.svg";
@@ -6,7 +7,7 @@ import { filterTickets } from "../../store/flightsSlice";
 
 export let countTransits: number[] = [];
 
-export default function FilterCountTransfers() {
+const FilterCountTransfers:React.FC = () => {
   const [filterTransit0, setFilterTransit0] = useState(false);
   const [filterTransit1, setFilterTransit1] = useState(false);
   const [filterTransit2, setFilterTransit2] = useState(false);
@@ -26,7 +27,6 @@ export default function FilterCountTransfers() {
     setFilterTransit0(!filterTransit0);
 	  checkCountTransit(0);
 	    dispatch(filterTickets())
-	
   }
 
   const handleFilterTransitClick1 = () => {
@@ -120,3 +120,4 @@ export default function FilterCountTransfers() {
   );
 }
 
+export default FilterCountTransfers;

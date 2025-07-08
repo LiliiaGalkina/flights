@@ -29,8 +29,6 @@ type FlightState = {
 error: string | null; 
 };
 
-
-
 export const fetchFlights = createAsyncThunk<
   Flight[],
   undefined,
@@ -50,7 +48,6 @@ const initialState: FlightState = {
   loading: false,
 	error: null,
 };
-
 
 const flightsSlice = createSlice({
   name: "flights",
