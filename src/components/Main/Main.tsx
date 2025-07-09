@@ -31,7 +31,8 @@ const Main: React.FC = () => {
     }
   }, [displayedTickets]);
 
-  const flights = useAppSelector((state) => state.flights.filtered);
+	const flights = useAppSelector((state) => state.flights.filtered);
+	const isLoading = useAppSelector((state) => state.flights.loading);
 
   const onFilterCheap = () => {
     if (!isCheapActive) {
@@ -99,7 +100,8 @@ const Main: React.FC = () => {
             Самый оптимальный
           </button>
         </div>
-        <FilterMobile />
+			  <FilterMobile />
+			  {isLoading ? <h2 style={{ fontSize: "2.4rem", fontWeight: "700"}}>Идет загрузка данных</h2> : ""}
         <div className={style.content__tickets}>
           {flights.slice(0, displayedTickets).map((flight) => (
             <Ticket key={flight.id} {...flight} />
