@@ -107,7 +107,7 @@ const Main: React.FC = () => {
         </div>
         <button
           className={style.button}
-          style={{ display: displayedTickets < 15 ? "block" : "none" }}
+          style={{ display: displayedTickets < flights.length ? "block" : "none" }}
           onClick={handleLoadMore}
         >
           Загрузить еще билеты
