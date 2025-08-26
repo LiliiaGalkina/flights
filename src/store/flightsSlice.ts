@@ -34,7 +34,7 @@ export const fetchFlights = createAsyncThunk<
   undefined,
   { rejectValue: string }
 >("flights/fetchFlights", async function (_, { rejectWithValue }) {
-  const res = await fetch("/src/flights.json");
+  const res = await fetch("./flights.json");
   if (!res.ok) {
     return rejectWithValue("Server Error!");
   }
