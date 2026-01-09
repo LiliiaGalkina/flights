@@ -1,0 +1,15 @@
+//переменные
+$colorFontMain: #4E148C;
+$colorFontFilters: #858AE3;
+$colorFontLightt: #F7F9F7;
+$backgroundFilters: #E8EBF2;
+$colorFontError: #7a0000;
+$colorFontLoading: #157c15;
+
+
+//Миксины
+@mixin title($fontsize, $color){
+	font-size: $fontsize;
+	font-weight: 700;
+	color: $color;
+}

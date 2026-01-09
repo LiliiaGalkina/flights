@@ -1,10 +1,13 @@
-import "./components/Layout/reset.scss";
-import Layout from "./components/Layout/Layout";
+import "./reset.scss";
+import "./App.scss";
+import Header from "./components/Header";
+import MainContent from "./components/MainContent";
 
 const App = () => {
   return (
     <div>
-      <Layout />
+		  <Header />
+		  <MainContent/>
     </div>
   );
 };

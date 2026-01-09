@@ -3,34 +3,10 @@ import {
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-
-import { companiesName } from "../components/Main/FilterCompany";
-import { countTransits } from "../components/Main/FilterCountTransfers";
-
-type Time = {
-  startTime: string;
-  endTime: string;
-};
-
-type Flight = {
-  id: number;
-  price: number;
-  fromto: string;
-  time: Time;
-  company: string;
-  duration: number;
-  connectionAmount: number;
-};
-
-type FlightState = {
-  flights: Flight[];
-  filtered: Flight[];
-  loading: boolean;
-error: string | null; 
-};
+import type { IFlight, IFlightState } from "../components/types";
 
 export const fetchFlights = createAsyncThunk<
-  Flight[],
+  IFlight[],
   undefined,
   { rejectValue: string }
 >("flights/fetchFlights", async function (_, { rejectWithValue }) {
@@ -42,11 +18,13 @@ export const fetchFlights = createAsyncThunk<
   return data;
 });
 
-const initialState: FlightState = {
+const initialState: IFlightState = {
   flights: [],
   filtered: [],
-  loading: false,
-	error: null,
+  filterByCompany: [],
+  filterByTransfersCount: [],
+  isLoading: false,
+  isError: false,
 };
 
 const flightsSlice = createSlice({
@@ -64,22 +42,53 @@ const flightsSlice = createSlice({
         (a, b) => a.connectionAmount - b.connectionAmount
       );
     },
+
+    setSelectedStops: (state, action) => {
+      if (!state.filterByTransfersCount.includes(action.payload)) {
+        state.filterByTransfersCount.push(action.payload);
+      } else {
+        state.filterByTransfersCount = state.filterByTransfersCount.filter(
+          (countTransitItem) => countTransitItem !== action.payload
+        );
+      }
+    },
+    setSelectedAirlines: (state, action) => {
+      if (!state.filterByCompany.includes(action.payload)) {
+        state.filterByCompany.push(action.payload);
+      } else {
+        state.filterByCompany = state.filterByCompany.filter(
+          (companyItem) => companyItem !== action.payload
+        );
+      }
+    },
     filterTickets: (state) => {
-      if (companiesName.length > 0 && countTransits.length === 0) {
+      if (
+        state.filterByCompany.length > 0 &&
+        state.filterByTransfersCount.length === 0
+      ) {
         state.filtered = state.flights.filter((flight) =>
-          companiesName.includes(flight.company)
+          state.filterByCompany.includes(flight.company)
         );
-      } else if (companiesName.length === 0 && countTransits.length > 0) {
+      } else if (
+        state.filterByCompany.length === 0 &&
+        state.filterByTransfersCount.length > 0
+      ) {
         state.filtered = state.flights.filter((flight) =>
-          countTransits.includes(flight.connectionAmount)
+          state.filterByTransfersCount.includes(flight.connectionAmount)
         );
-      } else if (companiesName.length > 0 && countTransits.length > 0) {
+      } else if (
+        state.filterByCompany.length > 0 &&
+        state.filterByTransfersCount.length > 0
+      ) {
         state.filtered = state.flights.filter(
           (flight) =>
-            countTransits.includes(flight.connectionAmount) &&
-            companiesName.includes(flight.company)
+            state.filterByTransfersCount.includes(flight.connectionAmount) &&
+            state.filterByCompany.includes(flight.company)
         );
-      } else if (companiesName.length === 0 && countTransits.length === 0) {
+      } else if (
+        state.filterByCompany.length === 0 &&
+        state.filterByTransfersCount.length === 0
+      ) {
         state.filtered = state.flights;
       }
     },
@@ -87,17 +96,21 @@ const flightsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchFlights.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.isLoading = true;
       })
       .addCase(
         fetchFlights.fulfilled,
-        (state, action: PayloadAction<Flight[]>) => {
+        (state, action: PayloadAction<IFlight[]>) => {
           state.flights = action.payload;
-			state.filtered = action.payload;
-          state.loading = false;
+          state.filtered = action.payload;
+          state.isLoading = false;
+          state.isError = false;
         }
-      );
+      )
+      .addCase(fetchFlights.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
   },
 });
 
@@ -106,6 +119,8 @@ export const {
   sortTicketsFast,
   sortTicketsOptimal,
   filterTickets,
+  setSelectedAirlines,
+  setSelectedStops,
 } = flightsSlice.actions;
 
 export default flightsSlice.reducer;
