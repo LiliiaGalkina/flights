@@ -3,6 +3,7 @@ import TransferCountFilter from "./TransferCountFilter";
 import TicketsList from "./TicketsList";
 import { useState } from "react";
 import { useAppSelector } from "../store/hook";
+import arrow from "/image/arrow.png"
 
 const MainContent = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -36,7 +37,7 @@ const MainContent = () => {
                 >
                   <p className="filtermobile__buttontext">Открыть настройки</p>
                   <img
-                    src="/image/arrow.png"
+                    src={arrow}
                     alt="белая стрелка вниз"
                     style={{
                       transform: showFilter ? "rotate(180deg)" : "none",
