@@ -40,7 +40,7 @@ const MainContent = () => {
                     src={arrow}
                     alt="белая стрелка вниз"
                     style={{
-                      transform: showFilter ? "rotate(180deg)" : "none",
+                      transform: showFilter ?  "none" : "rotate(180deg)",
                     }}
                   />
                 </div>
