@@ -40,7 +40,7 @@ const MainContent = () => {
                     src={arrow}
                     alt="белая стрелка вниз"
                     style={{
-                      transform: showFilter ?  "none" : "rotate(180deg)",
+                      transform: showFilter ? "rotate(180deg)" : "none",
                     }}
                   />
                 </div>
@@ -48,7 +48,7 @@ const MainContent = () => {
             </div>
             <div
               className={`main__item filters ${
-                showFilter ? "filters__hidden" : ""
+                showFilter ? "" : "filters__hidden"
               }`}
             >
               <TransferCountFilter />
