@@ -21,7 +21,7 @@ const TicketsList = () => {
   }, [dispatch]);
 
   const handleLoadMore = useCallback(() => {
-    if (displayedTickets < 15) {
+    if (displayedTickets < 30) {
       setDisplayedTickets(displayedTickets + 3);
     }
   }, [displayedTickets]);
