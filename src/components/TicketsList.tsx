@@ -65,6 +65,7 @@ const TicketsList = () => {
             backgroundColor: isCheapActive ? "#4E148C" : "#E8EBF2",
             color: isCheapActive ? "#F7F9F7" : "#4E148C",
           }}
+          title="Сортировка по цене билета"
         >
           Самый дешевый
         </button>
@@ -75,6 +76,7 @@ const TicketsList = () => {
             backgroundColor: isFastActive ? "#4E148C" : "#E8EBF2",
             color: isFastActive ? "#F7F9F7" : "#4E148C",
           }}
+          title="Сортировка по длительности полета"
         >
           Самый быстрый
         </button>
@@ -85,6 +87,7 @@ const TicketsList = () => {
             backgroundColor: isOptimalActive ? "#4E148C" : "#E8EBF2",
             color: isOptimalActive ? "#F7F9F7" : "#4E148C",
           }}
+          title="Сортировка по количеству пересадок"
         >
           Самый оптимальный
         </button>
