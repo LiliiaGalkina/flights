@@ -55,7 +55,7 @@
       "startTime": "02:00",
       "endTime": "22:30"
     },
-    "company":  "Red Wings",
+    "company": "Red Wings",
     "duration": 1230,
     "connectionAmount": 3
   },
@@ -167,16 +167,196 @@
     "duration": 610,
     "connectionAmount": 2
   },
-    {
-      "id": 15,
-      "price": 10540,
-      "fromto": "SVO-LED",
-      "time": {
-        "startTime": "10:00",
-        "endTime": "16:50"
-      },
-      "company": "S7 Airlines",
-      "duration": 410,
-      "connectionAmount": 1
-    }
+  {
+    "id": 15,
+    "price": 10540,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "10:00",
+      "endTime": "16:50"
+    },
+    "company": "S7 Airlines",
+    "duration": 410,
+    "connectionAmount": 1
+  },
+  {
+    "id": 16,
+    "price": 9680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "14:00",
+      "endTime": "16:30"
+    },
+    "company": "Победа",
+    "duration": 170,
+    "connectionAmount": 0
+  },
+  {
+    "id": 17,
+    "price": 28500,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "9:00",
+      "endTime": "16:00"
+    },
+    "company": "Red Wings",
+    "duration": 220,
+    "connectionAmount": 2
+  },
+  {
+    "id": 18,
+    "price": 23995,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "04:50",
+      "endTime": "18:30"
+    },
+    "company": "S7 Airlines",
+    "duration": 720,
+    "connectionAmount": 3
+  },
+  {
+    "id": 19,
+    "price": 32610,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "10:00",
+      "endTime": "18:30"
+    },
+    "company": "Red Wings",
+    "duration": 410,
+    "connectionAmount": 2
+  },
+  {
+    "id": 20,
+    "price": 30680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "02:00",
+      "endTime": "21:30"
+    },
+    "company": "Red Wings",
+    "duration": 1170,
+    "connectionAmount": 3
+  },
+  {
+    "id": 21,
+    "price": 43680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "00:10",
+      "endTime": "24:30"
+    },
+    "company": "S7 Airlines",
+    "duration": 1460,
+    "connectionAmount": 3
+  },
+  {
+    "id": 22,
+    "price": 30580,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "07:10",
+      "endTime": "20:30"
+    },
+    "company": "Победа",
+    "duration": 800,
+    "connectionAmount": 1
+  },
+  {
+    "id": 23,
+    "price": 10040,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "11:00",
+      "endTime": "13:20"
+    },
+    "company": "Победа",
+    "duration": 140,
+    "connectionAmount": 0
+  },
+  {
+    "id": 24,
+    "price": 30540,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "10:00",
+      "endTime": "23:30"
+    },
+    "company": "S7 Airlines",
+    "duration": 810,
+    "connectionAmount": 3
+  },
+  {
+    "id": 25,
+    "price": 34680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "02:30",
+      "endTime": "20:50"
+    },
+    "company": "Победа",
+    "duration": 1100,
+    "connectionAmount": 2
+  },
+  {
+    "id": 26,
+    "price": 23680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "00:10",
+      "endTime": "16:00"
+    },
+    "company": "S7 Airlines",
+    "duration": 960,
+    "connectionAmount": 1
+  },
+  {
+    "id": 27,
+    "price": 9680,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "08:00",
+      "endTime": "12:20"
+    },
+    "company": "Победа",
+    "duration": 250,
+    "connectionAmount": 0
+  },
+  {
+    "id": 28,
+    "price": 8540,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "11:10",
+      "endTime": "15:10"
+    },
+    "company": "Победа",
+    "duration": 260,
+    "connectionAmount": 0
+  },
+  {
+    "id": 29,
+    "price": 21730,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "10:00",
+      "endTime": "20:20"
+    },
+    "company": "S7 Airlines",
+    "duration": 620,
+    "connectionAmount": 2
+  },
+  {
+    "id": 30,
+    "price": 11540,
+    "fromto": "SVO-LED",
+    "time": {
+      "startTime": "10:20",
+      "endTime": "16:50"
+    },
+    "company": "S7 Airlines",
+    "duration": 390,
+    "connectionAmount": 1
+  }
 ]
