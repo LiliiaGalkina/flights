@@ -130,6 +130,7 @@ body {
     border: 1px solid $colorFontFilters;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
   }
 }
 
@@ -143,6 +144,7 @@ body {
     border-radius: 50%;
     accent-color: $backgroundFilters;
     border: 1px solid $colorFontFilters;
+    cursor: pointer;
 
     &_after {
       &::after {
